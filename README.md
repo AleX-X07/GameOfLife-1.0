@@ -29,6 +29,6 @@ Pendant la pause, il peut :
 - Recommencer une simulation avec "R".
 
 ## Disponible pour toute question :
-LinkedIn : https://www.linkedin.com/in/alex-soulier/
-Mail : asoulier@gaming.tech
+- LinkedIn : https://www.linkedin.com/in/alex-soulier/
+- Mail : asoulier@gaming.tech
 
