@@ -22,8 +22,9 @@ L'utilisateur choisi une entrée manuel ou alors par fichier texte. Dans les deu
 A partir de là, l'utilisateur peut :
 - Modifier la vitesse avec "Q" et "D",
 - Arrêter le programme avec "Echap",
-- Faire pause avec "Espace". Pendant la pause, il peut :
-                                - Reprendre avec "Espace",
-                                - Recommencer une simulation avec "R".
+- Faire pause avec "Espace".
+Pendant la pause, il peut :
+- Reprendre avec "Espace",
+- Recommencer une simulation avec "R".
   
 
