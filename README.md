@@ -21,8 +21,12 @@ L'utilisateur choisi une entrée manuel ou alors par fichier texte. Dans les deu
 
 Pour un choix manuel, tout se fait dans la console.
 Pour le fichier texte, il suffi d'écrire ce qui est demander dans un fichier texte et mettre ce fichier dans le même document que le cpp du jeu.
+
 <img width="892" height="388" alt="image" src="https://github.com/user-attachments/assets/c6aeaae3-8883-4ed9-b8e0-760b706a50bd" />
 
+Pour y accéder, faites clique-droit sur l'onglet en haut à gauche, puis "Ouvrir le dossier contenant".
+
+<img width="942" height="613" alt="image" src="https://github.com/user-attachments/assets/027230de-b176-491c-9dd2-1ef9945bbf23" />
 
 
 A partir de là, l'utilisateur peut :
