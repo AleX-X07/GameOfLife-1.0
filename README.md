@@ -25,7 +25,7 @@ A partir de là, l'utilisateur peut :
 - Faire pause avec "Espace".
 
 Pendant la pause, il peut : 
-Reprendre avec "Espace",
-Recommencer une simulation avec "R".
+- Reprendre avec "Espace",
+- Recommencer une simulation avec "R".
   
 
