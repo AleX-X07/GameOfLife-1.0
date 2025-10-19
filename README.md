@@ -19,6 +19,9 @@ L'utilisateur choisi une entrée manuel ou alors par fichier texte. Dans les deu
 - Le nombre de cellules vivantes à la première itération,
 - Les coordonnées des cellules vivantes lors de la permière itération.
 
+Pour un choix manuel, tout se fait dans la console.
+Pour le fichier texte, il suffi d'écrire ce qui est demander dans un fichier texte et mettre ce fichier dans le même document que le cpp du jeu.
+
 A partir de là, l'utilisateur peut :
 - Modifier la vitesse avec "Q" et "D",
 - Arrêter le programme avec "Echap",
