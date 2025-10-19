@@ -27,5 +27,8 @@ A partir de là, l'utilisateur peut :
 Pendant la pause, il peut : 
 - Reprendre avec "Espace",
 - Recommencer une simulation avec "R".
-  
+
+## Disponible pour toute question :
+LinkedIn : https://www.linkedin.com/in/alex-soulier/
+Mail : asoulier@gaming.tech
 
