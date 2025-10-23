@@ -172,7 +172,6 @@ int main() {
         auto TimePoint = std::chrono::steady_clock::now(); // Créer un point temporel, baser sur une horloge qui sert de repère pour calculer le temps.
         TimeStart = Time; // Mets la variable temps_start à la valeur du temps donner à l'entrée.
         // Boucle du jeu //
-
         while (Game) {
             if (_kbhit()) { // se déclenche quand une touche est presser.
                 int Key = _getch(); // récupère la touche pressée
@@ -182,21 +181,18 @@ int main() {
                     std::cout << "Mise en pause." << std::endl;
                     std::cout << "Espace pour reprendre." << std::endl;
                     std::cout << "R pour recommencer." << std::endl;
-                    int Key2 = _getch();
-                    if (Key2 == 114 || Key2 == 82) { // Clear la console et relance la boucle si on appuye sur R.
+                    /*Key = _getch();*/
+                    /*while (Key != 114 || Key != 82 ||)*/
+                    if (Key == 114 || Key == 82) { // Clear la console et relance la boucle si on appuye sur R.
                         system("CLS");
                         std::cout << "Le jeu recommence !";
                         break;
                     }
-                    else if (Key2 == 27) { // Ferme le jeu si on appuye sur "Echap".
+                    else if (Key == 27) { // Ferme le jeu si on appuye sur "Echap".
                         Game = false;
                         Restart = false;
                         break;
                     }
-                    else if (Key2 == 32) { // Inverse la valeur de "IsStop" si on appuye sur "Espace".
-                        IsStop = !IsStop;
-                    }
-
                 }
                 else if (Key == 100 || Key == 68) { // Si on appuye sur "d" ou "D", la vitesse augmente.
                     Time += 0.05;
@@ -216,82 +212,80 @@ int main() {
                     break;
                 }
             }
-            else {
-                if (IsStop == false)
-                {
-                    auto TimePoint2 = std::chrono::steady_clock::now(); // Créer un deuxième repère 
-                    std::chrono::duration<float> Duration = TimePoint2 - TimePoint; // Calcule le temps écoulé entre les deux repères.
-                    if (Duration.count() >= Time) { // Si le résultat obtenu correspond à la valeur de la variable "temps", on lance l'iteration. Sinon on attend.
-                        TimePoint = std::chrono::steady_clock::now(); // Reinitialise la valeur du premier repère pour recalculer le temps à chaque boucle.
+            if (IsStop == false)
+            {
+                auto TimePoint2 = std::chrono::steady_clock::now(); // Créer un deuxième repère 
+                std::chrono::duration<float> Duration = TimePoint2 - TimePoint; // Calcule le temps écoulé entre les deux repères.
+                if (Duration.count() >= Time) { // Si le résultat obtenu correspond à la valeur de la variable "temps", on lance l'iteration. Sinon on attend.
+                    TimePoint = std::chrono::steady_clock::now(); // Reinitialise la valeur du premier repère pour recalculer le temps à chaque boucle.
 
 
-                        for (int i = 0; i < Size; i++) { // Mets toutes les valeurs du deuxième tableau à 0.
-                            NewCells[i] = 0;
-                        }
+                    for (int i = 0; i < Size; i++) { // Mets toutes les valeurs du deuxième tableau à 0.
+                        NewCells[i] = 0;
+                    }
 
-                        system("CLS"); // Clear la console.
+                    system("CLS"); // Clear la console.
 
-                        for (int X = 0; X < SizeX; X++) { // Double boucle pour se déplacer dans le tableau, X et Y sont les coordonnées.
-                            for (int Y = 0; Y < SizeY; Y++) {
-                                int ActualIndex = X * SizeY + Y; // Calcule l'index actuelle.
-                                if (Cell[ActualIndex] == 0) { // Si l'index est égale à 0, on affiche ". ".
-                                    std::cout << " .";
-                                }
-                                else {
-                                    std::cout << "[]"; // Sinon, "[]"
-                                }
+                    for (int X = 0; X < SizeX; X++) { // Double boucle pour se déplacer dans le tableau, X et Y sont les coordonnées.
+                        for (int Y = 0; Y < SizeY; Y++) {
+                            int ActualIndex = X * SizeY + Y; // Calcule l'index actuelle.
+                            if (Cell[ActualIndex] == 0) { // Si l'index est égale à 0, on affiche ". ".
+                                std::cout << " .";
                             }
-                            std::cout << std::endl;
+                            else {
+                                std::cout << "[]"; // Sinon, "[]"
+                            }
                         }
-                        std::cout << "Vitesse actuel : " << Time << " seconds. " << std::endl;
-                        std::cout << "Espace pour mettre en pause." << std::endl;
-                        std::cout << "Echap pour arreter." << std::endl;
-                        std::cout << "D pour augmenter la vitesse de 0.1." << std::endl;
-                        std::cout << "Q pour reduire la vitesse de 0.1." << std::endl;
+                        std::cout << std::endl;
+                    }
+                    std::cout << "Vitesse actuel : " << Time << " seconds. " << std::endl;
+                    std::cout << "Espace pour mettre en pause." << std::endl;
+                    std::cout << "Echap pour arreter." << std::endl;
+                    std::cout << "D pour augmenter la vitesse de 0.1." << std::endl;
+                    std::cout << "Q pour reduire la vitesse de 0.1." << std::endl;
 
-                        for (int X = 0; X < SizeX; X++) { // Double boucle pour se déplacer dans le tableau, X et Y sont les coordonnées.
-                            for (int Y = 0; Y < SizeY; Y++) {
+                    for (int X = 0; X < SizeX; X++) { // Double boucle pour se déplacer dans le tableau, X et Y sont les coordonnées.
+                        for (int Y = 0; Y < SizeY; Y++) {
 
-                                int ActualIndex = X * SizeY + Y; // Calcule l'index actuelle.
+                            int ActualIndex = X * SizeY + Y; // Calcule l'index actuelle.
 
-                                for (int VX = X - 1; VX <= X + 1; VX++) { // Double boucle qui parcours les 8 voisins de l'index actuelle.
-                                    for (int VY = Y - 1; VY <= Y + 1; VY++) {
-                                        if (VX >= 0 && VX < SizeX && VY >= 0 && VY < SizeY) { // Condition qui vérifie que tout les voisins sont présent dans le tableau. ( Pour les cellules au bord du tableau. )
-                                            int VIndex = VX * SizeY + VY; // Calcule l'index du voisins sur lequel on est.
-                                            if (VIndex != ActualIndex) { // Vérifie que l'index du voisins sur lequel on est n'est pas le même que celui de la cellules où on est placer, pour pas qu'elle se compte elle même en tant que voisins.
-                                                if (Cell[VIndex] == 1) // Si la cellules est égale à 1, on ajoute 1 au compteur des voisins.
-                                                {
-                                                    Neightbor++;
-                                                }
+                            for (int VX = X - 1; VX <= X + 1; VX++) { // Double boucle qui parcours les 8 voisins de l'index actuelle.
+                                for (int VY = Y - 1; VY <= Y + 1; VY++) {
+                                    if (VX >= 0 && VX < SizeX && VY >= 0 && VY < SizeY) { // Condition qui vérifie que tout les voisins sont présent dans le tableau. ( Pour les cellules au bord du tableau. )
+                                        int VIndex = VX * SizeY + VY; // Calcule l'index du voisins sur lequel on est.
+                                        if (VIndex != ActualIndex) { // Vérifie que l'index du voisins sur lequel on est n'est pas le même que celui de la cellules où on est placer, pour pas qu'elle se compte elle même en tant que voisins.
+                                            if (Cell[VIndex] == 1) // Si la cellules est égale à 1, on ajoute 1 au compteur des voisins.
+                                            {
+                                                Neightbor++;
                                             }
                                         }
                                     }
                                 }
-
-                                // Vérifie les rèlges du jeu de la vie, pour modifier les cellules en conséquences.//
-
-                                if (Cell[ActualIndex] == 1) // Si la cellules est vivantes,
-                                {
-                                    if (Neightbor == 3 || Neightbor == 2) // et qu'elle a 2 ou 3 voisins,
-                                    {
-                                        NewCells[ActualIndex] = 1; // elle devient vivantes,
-                                    }
-                                    else {
-                                        NewCells[ActualIndex] = 0; // sinon elle meurt.
-                                    }
-                                }
-                                else { // Si elle est morte, 
-                                    if (Neightbor == 3) { // et qu'elle a 3 voisins, 
-                                        NewCells[ActualIndex] = 1; // elle devient vivantes.
-                                    }
-                                }
-                                Neightbor = 0; // Reinitialise la valeur de voisins, pour les cellules suivantes.
                             }
-                        }
 
-                        for (int y = 0; y < Size; y++) { // Modifie les valeurs du tableau de base avec celle du tableau temporaire.
-                            Cell[y] = NewCells[y];
+                            // Vérifie les rèlges du jeu de la vie, pour modifier les cellules en conséquences.//
+
+                            if (Cell[ActualIndex] == 1) // Si la cellules est vivantes,
+                            {
+                                if (Neightbor == 3 || Neightbor == 2) // et qu'elle a 2 ou 3 voisins,
+                                {
+                                    NewCells[ActualIndex] = 1; // elle devient vivantes,
+                                }
+                                else {
+                                    NewCells[ActualIndex] = 0; // sinon elle meurt.
+                                }
+                            }
+                            else { // Si elle est morte, 
+                                if (Neightbor == 3) { // et qu'elle a 3 voisins, 
+                                    NewCells[ActualIndex] = 1; // elle devient vivantes.
+                                }
+                            }
+                            Neightbor = 0; // Reinitialise la valeur de voisins, pour les cellules suivantes.
                         }
+                    }
+
+                    for (int y = 0; y < Size; y++) { // Modifie les valeurs du tableau de base avec celle du tableau temporaire.
+                        Cell[y] = NewCells[y];
                     }
                 }
             }
